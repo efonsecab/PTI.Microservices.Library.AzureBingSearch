@@ -22,6 +22,8 @@ jobs:
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build Library
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    - name: Run Tests
+      run: dotnet test "${{ env.TESTS_PROJECT }}" -e AzureBingSearchConfiguration:Endpoint=${{ secrets.AZUREBINGSEARCHCONFIGURATION_ENDPOINT }} -e AzureBingSearchConfiguration:Key=${{ secrets.AZUREBINGSEARCHCONFIGURATION_KEY }} -e RapidApiKey=${{ secrets.RapidApiKey }} 
     - name: Pack Project
       run: dotnet pack "${{ env.WORKING_DIRECTORY }}" --no-restore --no-build --configuration ${{ env.CONFIGURATION }} --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
     - name: Push Package

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTI.Microservices.Library.AzureBingSearch", "PTI.Microservices.Library.AzureBingSearch.csproj", "{B394F043-1D5B-496D-A2BC-1904360D3D34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTI.Microservices.Library.AzureBingSearch.AutomatedTests", "..\PTI.Microservices.Library.AzureBingSearch.AutomatedTests\PTI.Microservices.Library.AzureBingSearch.AutomatedTests.csproj", "{F10C2407-3B03-4A97-A640-CB043A4E8974}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B394F043-1D5B-496D-A2BC-1904360D3D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B394F043-1D5B-496D-A2BC-1904360D3D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B394F043-1D5B-496D-A2BC-1904360D3D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10C2407-3B03-4A97-A640-CB043A4E8974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10C2407-3B03-4A97-A640-CB043A4E8974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10C2407-3B03-4A97-A640-CB043A4E8974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10C2407-3B03-4A97-A640-CB043A4E8974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
