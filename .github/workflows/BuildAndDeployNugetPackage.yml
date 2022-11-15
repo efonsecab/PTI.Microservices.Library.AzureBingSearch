@@ -1,0 +1,28 @@
+name: Build And Deploy Nuget Package
+on:
+  push:
+    branches:
+    - main
+env:
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 7.0.x
+  WORKING_DIRECTORY: src/PTI.Microservices.Library.AzureBingSearch/PTI.Microservices.Library.AzureBingSearch.csproj
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
+  NUGET_SOURCE_URL: https://api.nuget.org/v3/index.json
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Restore Packages
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Build Library
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    - name: Pack Project
+      run: dotnet pack "${{ env.WORKING_DIRECTORY }}" --no-restore --no-build --configuration ${{ env.CONFIGURATION }} --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+    - name: Push Package
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg --skip-duplicate -k ${{ secrets.NUGET }} -s ${{ env.NUGET_SOURCE_URL }}
